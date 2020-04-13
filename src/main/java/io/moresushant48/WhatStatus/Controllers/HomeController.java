@@ -40,4 +40,10 @@ public class HomeController {
         		.contentLength(file.contentLength())
         		.body(file);
     }
+	
+	@GetMapping("/deleteall")
+	public ModelAndView deleteAllFiles() {
+		new StoreFile().deleteAll();
+		return new ModelAndView("redirect:/viewall");
+	}
 }

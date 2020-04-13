@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.util.StringUtils;
@@ -75,4 +76,12 @@ public class StoreFile {
 		return arr;        
     }
 
+	public void deleteAll() {
+        try {
+			FileUtils.cleanDirectory(rootloc.toFile());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
 }
